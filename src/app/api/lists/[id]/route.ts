@@ -79,7 +79,7 @@ export async function DELETE(req: Request) {
       );
     }
 
-    // удаляем все карточки этого списка
+    // del all
     await db.collection("cards").deleteMany({ listId: _id });
 
     return NextResponse.json({ ok: true });

@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
-import { connectToDatabase } from "../../../../../lib/mongodb"; // здесь УЖЕ 5 ../
+import { connectToDatabase } from "../../../../../lib/mongodb"; 
 
-// достаём id из URL /api/boards/<id>
+// id >url
 function getIdFromRequest(req: Request): string | null {
   try {
     const url = new URL(req.url);
@@ -13,7 +13,7 @@ function getIdFromRequest(req: Request): string | null {
   }
 }
 
-// строим фильтр, который сработает и если _id строка, и если ObjectId
+// id ili obj
 function buildIdFilter(id: string): any {
   const variants: any[] = [{ _id: id }];
 
@@ -24,7 +24,7 @@ function buildIdFilter(id: string): any {
   return variants.length === 1 ? variants[0] : { $or: variants };
 }
 
-// GET /api/boards/:id
+// GET 
 export async function GET(req: Request) {
   try {
     const id = getIdFromRequest(req);
@@ -60,7 +60,7 @@ export async function GET(req: Request) {
   }
 }
 
-// PATCH /api/boards/:id – rename
+// rename
 export async function PATCH(req: Request) {
   try {
     const id = getIdFromRequest(req);
@@ -118,7 +118,7 @@ export async function PATCH(req: Request) {
   }
 }
 
-// DELETE /api/boards/:id
+// delete
 export async function DELETE(req: Request) {
   try {
     const id = getIdFromRequest(req);

@@ -129,7 +129,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col bg-sky-800 text-white">
-      {/* верхняя панель */}
       <header className="flex items-center justify-between px-6 py-3 bg-sky-900/80 shadow">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-semibold">Boards</h1>
@@ -144,9 +143,9 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* контент */}
+      
       <div className="flex-1 px-6 py-4">
-        {/* форма создания доски */}
+       
         <form
           onSubmit={createBoard}
           className="mb-4 flex flex-wrap items-center gap-3"

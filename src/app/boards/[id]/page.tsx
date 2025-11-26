@@ -59,7 +59,7 @@ export default function BoardPage() {
         if (boardData.ok) {
           setBoard(boardData.board);
 
-          // 🔹 метрика: доска открыта
+          // metrika open
           const ph = getPosthog();
           ph?.capture("board_opened", { boardId: boardData.board._id });
         }
@@ -72,7 +72,7 @@ export default function BoardPage() {
     })();
   }, [boardId]);
 
-  // создание списка через форму
+  // sozdania form
   async function handleCreateList(e: React.FormEvent) {
     e.preventDefault();
     const title = newListTitle.trim();
@@ -90,7 +90,7 @@ export default function BoardPage() {
         setLists((prev) => [...prev, data.list]);
         setNewListTitle("");
 
-        // 🔹 метрика: список создан
+        // metrika spisok sozdan
         const ph = getPosthog();
         ph?.capture("list_created", {
           boardId,
@@ -152,7 +152,7 @@ export default function BoardPage() {
     if (data.ok) {
       setCards((prev) => [...prev, data.card]);
 
-      // 🔹 метрика: карточка создана
+      // metrika kartocka
       const ph = getPosthog();
       ph?.capture("card_created", {
         boardId,
@@ -169,7 +169,7 @@ export default function BoardPage() {
     setCardTitle(card.title);
     setCardDesc(card.description || "");
 
-    // 🔹 метрика: карточка открыта (модалка)
+    // metrika kart otkr
     const ph = getPosthog();
     ph?.capture("card_opened", {
       cardId: card._id,
@@ -244,7 +244,7 @@ export default function BoardPage() {
 
   return (
     <main className="min-h-screen flex flex-col bg-sky-800 text-white">
-      {/* Хедер: слева — название + Add list, справа — Home */}
+     
       <header className="flex flex-wrap items-center justify-between gap-3 px-6 py-3 bg-sky-900/80 shadow">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-semibold">{board.title}</h1>
@@ -277,7 +277,7 @@ export default function BoardPage() {
         </button>
       </header>
 
-      {/* Основная часть: списки */}
+      
       <div className="flex-1 overflow-x-auto overflow-y-hidden">
         <div className="flex items-start gap-4 px-4 py-4 min-h-full">
           {lists.map((list) => (
@@ -285,7 +285,7 @@ export default function BoardPage() {
               key={list._id}
               className="w-72 bg-slate-900/90 rounded-lg shadow-sm flex-shrink-0"
             >
-              {/* заголовок списка */}
+              
               <div className="flex items-center justify-between px-3 py-2 border-b border-slate-700/70">
                 <span className="font-semibold text-sm">{list.title}</span>
                 <div className="flex gap-1">
@@ -304,7 +304,7 @@ export default function BoardPage() {
                 </div>
               </div>
 
-              {/* карточки */}
+              
               <div className="px-2 py-2 flex flex-col gap-2 max-h-[70vh] overflow-y-auto">
                 {cards
                   .filter((c) => c.listId === list._id)
@@ -319,7 +319,7 @@ export default function BoardPage() {
                   ))}
               </div>
 
-              {/* кнопка add card */}
+              {/* knopka add card */}
               <button
                 onClick={() => addCard(list._id)}
                 className="w-full text-left px-3 py-2 text-sm text-slate-200/80 hover:bg-slate-800/80 rounded-b-lg border-t border-slate-700/60"
@@ -331,7 +331,7 @@ export default function BoardPage() {
         </div>
       </div>
 
-      {/* Модальное окно карточки */}
+      
       {selectedCard && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-slate-900 rounded-xl p-6 w-full max-w-xl shadow-2xl border border-slate-700">
