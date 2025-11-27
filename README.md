@@ -3,7 +3,7 @@
 Author: Maksad Ermetov  
 
 - GitHub: https://github.com/Maksad7/se-trello  
-- Live demo (Vercel): https://se-trello-e6mi7vh2a-maksads-projects-d2d88048.vercel.app/
+- Live demo (Vercel): https://se-trello.vercel.app
 
 ## Overview
 
@@ -219,10 +219,12 @@ running locally:
 git clone https://github.com/Maksad7/se-trello.git
 cd se-trello
 npm install
+npm run dev
 
 
 create:
 ```env.local```
+MONGODB_URI=mongodb+srv://username:password@cluster0.yaicnqa.mongodb.net/?appName=Cluster0
 NEXT_PUBLIC_POSTHOG_KEY=<PostHog project API key>
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com 
 
